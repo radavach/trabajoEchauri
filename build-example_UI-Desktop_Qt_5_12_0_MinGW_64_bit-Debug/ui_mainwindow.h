@@ -53,7 +53,7 @@ public:
         LogOutButton->setGeometry(QRect(110, 10, 100, 30));
         ContactsTextEdit = new QTextEdit(centralWidget);
         ContactsTextEdit->setObjectName(QString::fromUtf8("ContactsTextEdit"));
-        ContactsTextEdit->setGeometry(QRect(10, 60, 180, 240));
+        ContactsTextEdit->setGeometry(QRect(10, 50, 180, 240));
         BuscarButton = new QPushButton(centralWidget);
         BuscarButton->setObjectName(QString::fromUtf8("BuscarButton"));
         BuscarButton->setEnabled(false);
@@ -73,10 +73,10 @@ public:
         AddLineEdit->setGeometry(QRect(219, 10, 181, 30));
         EscribirMensajelineEdit = new QLineEdit(centralWidget);
         EscribirMensajelineEdit->setObjectName(QString::fromUtf8("EscribirMensajelineEdit"));
-        EscribirMensajelineEdit->setGeometry(QRect(10, 310, 141, 31));
+        EscribirMensajelineEdit->setGeometry(QRect(10, 310, 161, 31));
         EnviarpushButton = new QPushButton(centralWidget);
         EnviarpushButton->setObjectName(QString::fromUtf8("EnviarpushButton"));
-        EnviarpushButton->setGeometry(QRect(160, 310, 75, 31));
+        EnviarpushButton->setGeometry(QRect(170, 310, 75, 31));
         MainWindow->setCentralWidget(centralWidget);
 
         retranslateUi(MainWindow);
@@ -105,7 +105,7 @@ public:
         BusquedaLineEdit->setPlaceholderText(QApplication::translate("MainWindow", "Ingresa nombre de usuario ", nullptr));
         AddLineEdit->setText(QString());
         AddLineEdit->setPlaceholderText(QApplication::translate("MainWindow", "Ingresa el nombre de usuario", nullptr));
-        EscribirMensajelineEdit->setPlaceholderText(QApplication::translate("MainWindow", "Ingresa el mensaje a enviar", nullptr));
+        EscribirMensajelineEdit->setPlaceholderText(QApplication::translate("MainWindow", "Ingresa contacto para mensaje", nullptr));
         EnviarpushButton->setText(QApplication::translate("MainWindow", "Enviar!!", nullptr));
     } // retranslateUi
 

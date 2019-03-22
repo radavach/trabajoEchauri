@@ -75,7 +75,22 @@ void Admin::loadDB(){
                 contactos.setUserName(objCont["name"].toString());
                 contactos.setPhoneNumber(objCont["phone"].toString());
 
+                QJsonArray jsonArrayMensaje = objCont["mensajes"].toArray();
+                Conversacion conversacion;
+
+                ///Lo siguiente que se hará es ... No recuerdo, lo siento !!!!!! :(
+                for(int m= 0; m <jsonArrayMensaje.size(); m++)
+                {
+                    QJsonObject objMensaje = jsonArrayMensaje[m].toObject();
+                    conversacion.setFecha(objMensaje["fecha"].toString());
+                    conversacion.setTexto(objMensaje["texto"].toString());
+                    conversacion.setTrans(objMensaje["transmicion"].toString());
+
+                    contactos.addMensaje(conversacion);
+                }
+
                 u.addContact(contactos);
+
             }
 
 
@@ -124,6 +139,8 @@ void Admin::addUser(QString name, QString phone, QString password)
         jsonObject["phone"] = phone;
 
 
+
+
         jsonArray.append(jsonObject);   //AGREGAR AL OBJETO JSON
 
         message.setWindowTitle("Nuevo Usuario");
@@ -142,7 +159,6 @@ void Admin::validateUser(QString name, QString password)
     {
         if(users[i].getUserName() == name && users[i].getPassword() == password){
             mainWindow = new MainWindow(&users[i]);
-
 
             connect(mainWindow,
                     SIGNAL(saveUs(QJsonArray)),

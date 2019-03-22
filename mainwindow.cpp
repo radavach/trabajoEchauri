@@ -117,6 +117,20 @@ void MainWindow::loadUsers()
                 contactos.setUserName(objCont["name"].toString());
                 contactos.setPhoneNumber(objCont["phone"].toString());
 
+                QJsonArray jsonArrayMensaje = objCont["mensajes"].toArray();
+                Conversacion conversacion;
+
+                ///Lo siguiente que se hará es ... No recuerdo, lo siento !!!!!! :(
+                for(int m= 0; m <jsonArrayMensaje.size(); m++)
+                {
+                    QJsonObject objMensaje = jsonArrayMensaje[m].toObject();
+                    conversacion.setFecha(objMensaje["fecha"].toString());
+                    conversacion.setTexto(objMensaje["texto"].toString());
+                    conversacion.setTrans(objMensaje["transmicion"].toString());
+
+                    contactos.addMensaje(conversacion);
+                }
+
                 u.addContact(contactos);
             }
 
@@ -152,6 +166,8 @@ void MainWindow::saveUsers()
             jsonObjectContacto["phone"] = contactos[j].getPhoneNumber();
 
 
+
+
             jsonarrayContactos.append(jsonObjectContacto);
         }
         jsonObjectUsuario["contactos"] = jsonarrayContactos;
@@ -159,9 +175,8 @@ void MainWindow::saveUsers()
         jsonArrayUsuarios.append(jsonObjectUsuario);
 
     }
-    emit saveUs(jsonArrayUsuarios);
 
-
+    saveDB(jsonArrayUsuarios);
 
 }
 
@@ -338,5 +353,10 @@ void MainWindow::on_BuscarButton_clicked()
 
 void MainWindow::on_EnviarpushButton_clicked()
 {
+}
 
+//Es una funcion que manda a guardar el JSon usuarios
+void MainWindow::saveDB(QJsonArray jsonArray)
+{
+    emit saveUs(jsonArray);
 }

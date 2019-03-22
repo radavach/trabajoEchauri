@@ -8,6 +8,8 @@
 #include "mainwindow.h"
 #include "user.h"
 #include <vector>
+#include "contacto.h"
+#include "conversacion.h"
 
 #include <qobject.h>
 #include <QJsonDocument>

@@ -24,9 +24,9 @@ class MainWindow : public QMainWindow
 {
     Q_OBJECT
 
-    public:
-        explicit MainWindow(User *u, QWidget *parent = nullptr);
-        ~MainWindow();
+public:
+    explicit MainWindow(User *u, QWidget *parent = nullptr);
+    ~MainWindow();
 
 private slots:  //WIDGETS
     void on_ProfileCheckBox_stateChanged(int arg1);
@@ -42,6 +42,8 @@ private slots:  //WIDGETS
     void on_BuscarButton_clicked();
 
     void on_EnviarpushButton_clicked();
+
+    void saveDB(QJsonArray jsonArray);
 
 private:
         Ui::MainWindow *ui;

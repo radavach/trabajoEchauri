@@ -2,11 +2,15 @@
 #define CONTACTO_H
 
 #include <QString>
+#include <vector>
+
+#include "conversacion.h"
 
 class Contacto
 {
 private:
     QString userName, phoneNumber;
+    std::vector<Conversacion> conversaciones;
 
 public:
     Contacto();
@@ -19,6 +23,10 @@ public:
     QString getPhoneNumber() const;
     void setPhoneNumber(const QString &value);
 
+    std::vector<Conversacion> getConversacion() const;
+    void setConversacion(const std::vector<Conversacion> &value);
+
+    void addMensaje(const Conversacion &value);
 };
 
 #endif // CONTACTO_H

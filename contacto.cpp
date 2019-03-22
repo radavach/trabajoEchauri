@@ -1,5 +1,20 @@
 #include "contacto.h"
 
+std::vector<Conversacion> Contacto::getConversacion() const
+{
+    return conversaciones;
+}
+
+void Contacto::setConversacion(const std::vector<Conversacion> &value)
+{
+    conversaciones = value;
+}
+
+void Contacto::addMensaje(const Conversacion &value)
+{
+    conversaciones.push_back(value);
+}
+
 Contacto::Contacto()
 {
     userName = "Unknown";

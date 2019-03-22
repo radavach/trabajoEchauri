@@ -17,6 +17,10 @@
                 {
                     "name": "JHONATAN_ROBLES",
                     "phone": "5865899120"
+                },
+                {
+                    "name": "Christian",
+                    "phone": "1234567890"
                 }
             ],
             "name": "Michelle",
@@ -396,7 +400,7 @@
                     "phone": "1234567890"
                 }
             ],
-            "name": "Christian2",
+            "name": "Christian",
             "password": "17",
             "phone": "1234567890"
         }

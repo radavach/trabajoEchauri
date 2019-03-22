@@ -14,6 +14,7 @@
 #include <QJsonDocument>
 #include <QJsonObject>
 #include <QDialog>
+#include <QDebug>
 #include <qmessagebox.h>
 
 namespace Ui {
@@ -27,6 +28,7 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(User *u, QWidget *parent = nullptr);
     ~MainWindow();
+
 
 private slots:  //WIDGETS
     void on_ProfileCheckBox_stateChanged(int arg1);
@@ -44,6 +46,8 @@ private slots:  //WIDGETS
     void on_EnviarpushButton_clicked();
 
     void saveDB(QJsonArray jsonArray);
+
+    void on_EscribirMensajelineEdit_textChanged(const QString &arg1);
 
 private:
         Ui::MainWindow *ui;
@@ -70,6 +74,10 @@ private:
         void updateUsersList();
         QString getPhoneByUser(QString username);
         void searchUsersByName(QString name);
+
+        ///se utiliza para verifiar que ambos usuarios sean amigos :3
+        bool validarAmistad();
+        void cambiarUsuario(const QString &userName);
 
 signals:
         void saveUs(QJsonArray jsonArray);

@@ -32,7 +32,7 @@
     </property>
     <property name="geometry">
      <rect>
-      <x>0</x>
+      <x>10</x>
       <y>10</y>
       <width>100</width>
       <height>30</height>
@@ -48,7 +48,7 @@
     </property>
     <property name="geometry">
      <rect>
-      <x>110</x>
+      <x>120</x>
       <y>10</y>
       <width>100</width>
       <height>30</height>
@@ -97,7 +97,7 @@ p, li { white-space: pre-wrap; }
     </property>
     <property name="geometry">
      <rect>
-      <x>410</x>
+      <x>420</x>
       <y>10</y>
       <width>120</width>
       <height>30</height>
@@ -143,7 +143,7 @@ p, li { white-space: pre-wrap; }
    <widget class="QLineEdit" name="AddLineEdit">
     <property name="geometry">
      <rect>
-      <x>219</x>
+      <x>230</x>
       <y>10</y>
       <width>181</width>
       <height>30</height>
@@ -170,11 +170,14 @@ p, li { white-space: pre-wrap; }
     </property>
    </widget>
    <widget class="QPushButton" name="EnviarpushButton">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
     <property name="geometry">
      <rect>
-      <x>170</x>
+      <x>174</x>
       <y>310</y>
-      <width>75</width>
+      <width>71</width>
       <height>31</height>
      </rect>
     </property>

@@ -68,9 +68,21 @@ void MainWindow::on_AddLineEdit_textChanged(const QString &arg1)
     if(ui->AddLineEdit->text().length() > 0){
         ui->AddButton->setEnabled(true);
     }
-
     else{
         ui->AddButton->setEnabled(false);
+    }
+}
+
+void MainWindow::on_EscribirMensajelineEdit_textChanged(const QString &arg1)
+{
+    Q_UNUSED(arg1);
+
+    if(ui->EscribirMensajelineEdit->text().length() > 0)
+    {
+        ui->EnviarpushButton->setEnabled(true);
+    }
+    else {
+        ui->EnviarpushButton->setEnabled(false);
     }
 }
 
@@ -156,17 +168,13 @@ void MainWindow::saveUsers()
         jsonObjectUsuario["password"] = usersVector[i].getPassword();
         jsonObjectUsuario["phone"] = usersVector[i].getPhoneNumber();
 
-        contactos = (usersVector[i].getUserName() == user->getUserName())? user->getContactos():usersVector[i].getContactos();
-
+        contactos = usersVector[i].getContactos();
 
         for(unsigned int j=0; j < contactos.size(); j++)
         {
 
             jsonObjectContacto["name"] = contactos[j].getUserName();
             jsonObjectContacto["phone"] = contactos[j].getPhoneNumber();
-
-
-
 
             jsonarrayContactos.append(jsonObjectContacto);
         }
@@ -296,6 +304,57 @@ void MainWindow::searchUsersByName(QString name)
     ui->UsersTextEdit->setText(searchList);
 }
 
+bool MainWindow::validarAmistad()
+{
+    QMessageBox msn;
+    QString usuarioActual = user->getUserName();
+    bool sonAmigos(true);
+
+    ///primero validamos que el usuario tenga el contacto
+    /// utilizamos la funcion de aristeo para validarlo
+    if(!isMyContact(ui->EscribirMensajelineEdit->text()))
+    {
+        msn.setWindowTitle("Alerta");
+        msn.setText("No tienes a este contacto");
+
+        msn.exec();
+
+        sonAmigos = false;
+    }
+    else
+    {
+        cambiarUsuario(ui->EscribirMensajelineEdit->text());
+
+        ///Ahora validamos ser amigos de esa persona
+        /// utilizamos la misma funcion
+        if(!isMyContact(usuarioActual))
+        {
+            msn.setWindowTitle("Alerta");
+            msn.setText("Ese contacto no te tiene agregado");
+
+            msn.exec();
+
+            sonAmigos = false;
+        }
+
+    }
+
+    cambiarUsuario(usuarioActual);
+
+    return  sonAmigos;
+}
+
+void MainWindow::cambiarUsuario(const QString &userName)
+{
+    for (unsigned long long i=0; i < usersVector.size(); i++)
+    {
+        if(userName == usersVector[i].getUserName())
+        {
+            user = &usersVector[i];
+        }
+    }
+}
+
 void MainWindow::on_AddButton_clicked()
 {
     QMessageBox msn;
@@ -320,7 +379,16 @@ void MainWindow::on_AddButton_clicked()
                 QString phone = getPhoneByUser(ui->AddLineEdit->text());
                 Contacto newContact(ui->AddLineEdit->text(), phone);
 
-                user->addContact(newContact); ///AGREGAR AL VECTOR
+
+                for(unsigned long long i=0; i < usersVector.size(); i++)
+                {
+                    if(usersVector[i].getUserName() == user->getUserName())
+                    {
+                        usersVector[i].addContact(newContact);
+                    }
+                }
+
+                //user->addContact(newContact); ///AGREGAR AL VECTOR
 
                 QJsonObject contactJsonObject;
                 contactJsonObject["name"] = newContact.getUserName();
@@ -353,6 +421,15 @@ void MainWindow::on_BuscarButton_clicked()
 
 void MainWindow::on_EnviarpushButton_clicked()
 {
+    //Si son amigos iniciara la conversacion
+    if(validarAmistad())
+    {
+        qDebug("Son amigos");
+    }
+    else
+    {
+        qDebug("no son amigos");
+    }
 }
 
 //Es una funcion que manda a guardar el JSon usuarios
@@ -360,3 +437,4 @@ void MainWindow::saveDB(QJsonArray jsonArray)
 {
     emit saveUs(jsonArray);
 }
+

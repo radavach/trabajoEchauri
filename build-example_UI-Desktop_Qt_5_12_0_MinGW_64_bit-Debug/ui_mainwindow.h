@@ -46,11 +46,11 @@ public:
         ProfileButton = new QPushButton(centralWidget);
         ProfileButton->setObjectName(QString::fromUtf8("ProfileButton"));
         ProfileButton->setEnabled(true);
-        ProfileButton->setGeometry(QRect(0, 10, 100, 30));
+        ProfileButton->setGeometry(QRect(10, 10, 100, 30));
         LogOutButton = new QPushButton(centralWidget);
         LogOutButton->setObjectName(QString::fromUtf8("LogOutButton"));
         LogOutButton->setEnabled(true);
-        LogOutButton->setGeometry(QRect(110, 10, 100, 30));
+        LogOutButton->setGeometry(QRect(120, 10, 100, 30));
         ContactsTextEdit = new QTextEdit(centralWidget);
         ContactsTextEdit->setObjectName(QString::fromUtf8("ContactsTextEdit"));
         ContactsTextEdit->setGeometry(QRect(10, 50, 180, 240));
@@ -61,7 +61,7 @@ public:
         AddButton = new QPushButton(centralWidget);
         AddButton->setObjectName(QString::fromUtf8("AddButton"));
         AddButton->setEnabled(false);
-        AddButton->setGeometry(QRect(410, 10, 120, 30));
+        AddButton->setGeometry(QRect(420, 10, 120, 30));
         UsersTextEdit = new QTextEdit(centralWidget);
         UsersTextEdit->setObjectName(QString::fromUtf8("UsersTextEdit"));
         UsersTextEdit->setGeometry(QRect(200, 50, 340, 250));
@@ -70,13 +70,14 @@ public:
         BusquedaLineEdit->setGeometry(QRect(250, 310, 181, 30));
         AddLineEdit = new QLineEdit(centralWidget);
         AddLineEdit->setObjectName(QString::fromUtf8("AddLineEdit"));
-        AddLineEdit->setGeometry(QRect(219, 10, 181, 30));
+        AddLineEdit->setGeometry(QRect(230, 10, 181, 30));
         EscribirMensajelineEdit = new QLineEdit(centralWidget);
         EscribirMensajelineEdit->setObjectName(QString::fromUtf8("EscribirMensajelineEdit"));
         EscribirMensajelineEdit->setGeometry(QRect(10, 310, 161, 31));
         EnviarpushButton = new QPushButton(centralWidget);
         EnviarpushButton->setObjectName(QString::fromUtf8("EnviarpushButton"));
-        EnviarpushButton->setGeometry(QRect(170, 310, 75, 31));
+        EnviarpushButton->setEnabled(false);
+        EnviarpushButton->setGeometry(QRect(174, 310, 71, 31));
         MainWindow->setCentralWidget(centralWidget);
 
         retranslateUi(MainWindow);

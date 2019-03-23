@@ -4,6 +4,7 @@
 #include "colormensaje.h"
 #include "conversacion.h"
 #include "user.h"
+#include "contacto.h"
 
 #include <QDialog>
 #include <QString>
@@ -35,8 +36,10 @@ private slots:
 
 private:
     Ui::VentanadeConversacionDialog *ui;
-    QString Nombre;
-    QString Contacto;
+    QString nombreUsuario;
+    QString nombreContacto;
+    Contacto *conversacionUsuario;
+    Contacto *conversacionContacto;
 
     std::vector<Conversacion>mensaje;
     QFile Mensaje;
@@ -48,6 +51,8 @@ private:
 
     bool validacionDeCadena(QString Texto);
     //void actualizacionDeConversacion();
+
+    Contacto *buscarContactoConversacion(User* usuario, QString contacto);
 
 signals:
     void saveConv();

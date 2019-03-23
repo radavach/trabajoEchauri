@@ -44,7 +44,7 @@ void User::setPassword(const QString &value)
     password = value;
 }
 
-std::vector<Contacto> User::getContactos()
+std::vector<Contacto> &User::getContactos()
 {
     return contactos;
 }

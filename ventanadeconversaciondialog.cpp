@@ -6,10 +6,15 @@ VentanadeConversacionDialog::VentanadeConversacionDialog(User *users, User *cont
     ui(new Ui::VentanadeConversacionDialog)
 {
     ui->setupUi(this);
-    ///Nombre es el equivalente a userName de contaco y usuario...
-    Nombre = users->getUserName();
+
+    ///Nombre es el equivalente a userName de contacto y usuario...
+    nombreUsuario = users->getUserName();
+
     ///Es similar al userName, pero en la parte de contactos...
-    Contacto = contacto->getUserName();
+    nombreContacto = contacto->getUserName();
+
+    this->conversacionUsuario = buscarContactoConversacion(users, this->nombreContacto);
+    this->conversacionContacto = buscarContactoConversacion(contacto, this->nombreUsuario);
 
     //system("mkdir colormensaje");
 
@@ -27,7 +32,11 @@ VentanadeConversacionDialog::~VentanadeConversacionDialog()
 ///Es el boton para después de escribir el mensaje y enviarlo.
 void VentanadeConversacionDialog::on_EnviarpushButton_clicked()
 {
-    Conversacion newMessage(Nombre, ui->MensajelineEdit->text());
+    Conversacion newMessage(nombreUsuario, ui->MensajelineEdit->text());
+
+    conversacionUsuario->addMensaje(newMessage);
+    conversacionContacto->addMensaje(newMessage);
+
     mensaje.push_back(newMessage);
 
     QJsonObject mensajeQJsonOb;
@@ -89,4 +98,19 @@ bool VentanadeConversacionDialog::validacionDeCadena(QString Texto)
             return true;
     }
     return false;
+}
+
+Contacto *VentanadeConversacionDialog::buscarContactoConversacion(User *usuario, QString contacto)
+{
+//    Contacto *conversacion(nullptr);
+
+    for (unsigned int i=0; i < usuario->getContactos().size(); i++)
+    {
+        if(usuario->getContactos()[i].getUserName() == contacto)
+        {
+            return &usuario->getContactos()[i];
+        }
+    }
+
+    return nullptr;
 }

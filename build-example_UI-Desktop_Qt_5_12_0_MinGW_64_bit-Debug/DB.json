@@ -3,22 +3,37 @@
         {
             "contactos": [
                 {
+                    "mensajes": [
+                    ],
                     "name": "MARCO_MORELOS",
                     "phone": "3677466609"
                 },
                 {
+                    "mensajes": [
+                    ],
                     "name": "JOSE_RUVALCABA",
                     "phone": "9094256303"
                 },
                 {
+                    "mensajes": [
+                    ],
                     "name": "JUAN_QUINTERO",
                     "phone": "2172284953"
                 },
                 {
+                    "mensajes": [
+                    ],
                     "name": "JHONATAN_ROBLES",
                     "phone": "5865899120"
                 },
                 {
+                    "mensajes": [
+                        {
+                            "fecha": "23/3/2019/12:33",
+                            "texto": "Michelle es un dinosaurio RAWR!!! :v//",
+                            "transmision": "Christian"
+                        }
+                    ],
                     "name": "Christian",
                     "phone": "1234567890"
                 }
@@ -30,14 +45,20 @@
         {
             "contactos": [
                 {
+                    "mensajes": [
+                    ],
                     "name": "MARCO_MORELOS",
                     "phone": "3677466609"
                 },
                 {
+                    "mensajes": [
+                    ],
                     "name": "Michelle",
                     "phone": "1234567890"
                 },
                 {
+                    "mensajes": [
+                    ],
                     "name": "OSVALDO_VALENZUELA",
                     "phone": "5011757772"
                 }
@@ -49,6 +70,8 @@
         {
             "contactos": [
                 {
+                    "mensajes": [
+                    ],
                     "name": "JOSE_RUVALCABA",
                     "phone": "9094256303"
                 }
@@ -396,6 +419,13 @@
         {
             "contactos": [
                 {
+                    "mensajes": [
+                        {
+                            "fecha": "23/3/2019/12:33",
+                            "texto": "Michelle es un dinosaurio RAWR!!! :v//",
+                            "transmision": "Christian"
+                        }
+                    ],
                     "name": "Michelle",
                     "phone": "1234567890"
                 }

@@ -29,7 +29,7 @@ class User
         void setPassword(const QString &value);
 
         //MODIFICAR CONTACTOS
-        std::vector<Contacto> getContactos();
+        std::vector<Contacto> &getContactos();
         void setContactos(const std::vector<Contacto> &value);
 
         void addContact(const Contacto &value);

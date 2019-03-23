@@ -160,8 +160,9 @@ void MainWindow::saveUsers()
     QJsonObject jsonObject;
     for(unsigned int i=0; i < usersVector.size(); i++)
     {
-        QJsonObject jsonObjectUsuario, jsonObjectContacto;
-        QJsonArray jsonarrayContactos;
+        QJsonObject jsonObjectUsuario;
+        QJsonArray jsonArrayContactos;
+
         std::vector<Contacto> contactos;
 
         jsonObjectUsuario["name"] = usersVector[i].getUserName();
@@ -172,17 +173,30 @@ void MainWindow::saveUsers()
 
         for(unsigned int j=0; j < contactos.size(); j++)
         {
+            QJsonObject jsonObjectContacto;
+            QJsonArray jsonArrayConversacion;
+            std::vector<Conversacion> conversaciones;
 
             jsonObjectContacto["name"] = contactos[j].getUserName();
             jsonObjectContacto["phone"] = contactos[j].getPhoneNumber();
 
-            for (unsigned int m=0; m < contactos[j].getConversacion().size(); m++) {
+            conversaciones = contactos[j].getConversacion();
+
+            for (unsigned int m=0; m < conversaciones.size(); m++) {
+                QJsonObject jsonObjectConversacion;
+
+                jsonObjectConversacion["fecha"] = conversaciones[m].getFecha();
+                jsonObjectConversacion["texto"] = conversaciones[m].getTexto();
+                jsonObjectConversacion["transmision"] = conversaciones[m].getTrans();
+
+                jsonArrayConversacion.append(jsonObjectConversacion);
 
             }
+            jsonObjectContacto["mensajes"] = jsonArrayConversacion;
 
-            jsonarrayContactos.append(jsonObjectContacto);
+            jsonArrayContactos.append(jsonObjectContacto);
         }
-        jsonObjectUsuario["contactos"] = jsonarrayContactos;
+        jsonObjectUsuario["contactos"] = jsonArrayContactos;
 
         jsonArrayUsuarios.append(jsonObjectUsuario);
 
@@ -448,6 +462,12 @@ void MainWindow::on_EnviarpushButton_clicked()
         contacto = getThisUser(ui->EscribirMensajelineEdit->text());
 
         conversacion = new VentanadeConversacionDialog(usuario, contacto);
+        connect(conversacion,
+                SIGNAL(saveConv()),
+                this,
+                SLOT(saveDB()) );
+
+        conversacion->show();
 
     }
     else

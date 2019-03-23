@@ -12,10 +12,10 @@ Conversacion::Conversacion()
      dateFormat += QString::number(Hora.hour()) + ":";
      dateFormat += QString::number(Hora.minute());
 
-
+    fecha = dateFormat;
 }
 
-Conversacion::Conversacion(QString transmision, QString text)
+Conversacion::Conversacion(QString transmision, QString text):Conversacion()
 {
     trans = transmision;
     texto = text;

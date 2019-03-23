@@ -34,11 +34,13 @@ public:
         VentanadeConversacionDialog->resize(400, 300);
         chatLineEdit = new QLineEdit(VentanadeConversacionDialog);
         chatLineEdit->setObjectName(QString::fromUtf8("chatLineEdit"));
+        chatLineEdit->setEnabled(true);
         chatLineEdit->setGeometry(QRect(10, 9, 381, 21));
         chatLineEdit->setLayoutDirection(Qt::LeftToRight);
         chatLineEdit->setAlignment(Qt::AlignCenter);
         VentanatableWidget = new QTableWidget(VentanadeConversacionDialog);
         VentanatableWidget->setObjectName(QString::fromUtf8("VentanatableWidget"));
+        VentanatableWidget->setEnabled(true);
         VentanatableWidget->setGeometry(QRect(10, 40, 381, 201));
         EnviarpushButton = new QPushButton(VentanadeConversacionDialog);
         EnviarpushButton->setObjectName(QString::fromUtf8("EnviarpushButton"));

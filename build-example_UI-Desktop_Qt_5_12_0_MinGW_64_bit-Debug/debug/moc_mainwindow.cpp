@@ -85,8 +85,8 @@ static const uint qt_meta_data_MainWindow[] = {
       10,    0,   83,    2, 0x08 /* Private */,
       11,    0,   84,    2, 0x08 /* Private */,
       12,    0,   85,    2, 0x08 /* Private */,
-      13,    1,   86,    2, 0x08 /* Private */,
-      14,    1,   89,    2, 0x08 /* Private */,
+      13,    0,   86,    2, 0x08 /* Private */,
+      14,    1,   87,    2, 0x08 /* Private */,
 
  // signals: parameters
     QMetaType::Void, QMetaType::QJsonArray,    3,
@@ -100,7 +100,7 @@ static const uint qt_meta_data_MainWindow[] = {
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
-    QMetaType::Void, QMetaType::QJsonArray,    3,
+    QMetaType::Void,
     QMetaType::Void, QMetaType::QString,    5,
 
        0        // eod
@@ -121,7 +121,7 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 6: _t->on_AddButton_clicked(); break;
         case 7: _t->on_BuscarButton_clicked(); break;
         case 8: _t->on_EnviarpushButton_clicked(); break;
-        case 9: _t->saveDB((*reinterpret_cast< QJsonArray(*)>(_a[1]))); break;
+        case 9: _t->saveDB(); break;
         case 10: _t->on_EscribirMensajelineEdit_textChanged((*reinterpret_cast< const QString(*)>(_a[1]))); break;
         default: ;
         }

@@ -3,6 +3,7 @@
 
 #include "colormensaje.h"
 #include "conversacion.h"
+#include "user.h"
 
 #include <QDialog>
 #include <QString>
@@ -24,7 +25,7 @@ class VentanadeConversacionDialog : public QDialog
     Q_OBJECT
 
 public:
-    explicit VentanadeConversacionDialog(QString users, QString contacto, QWidget *parent = nullptr);
+    explicit VentanadeConversacionDialog(User *users, User *contacto, QWidget *parent = nullptr);
     ~VentanadeConversacionDialog();
 
 private slots:
@@ -47,6 +48,9 @@ private:
 
     bool validacionDeCadena(QString Texto);
     //void actualizacionDeConversacion();
+
+signals:
+    void saveConv();
 
 };
 

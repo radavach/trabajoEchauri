@@ -3,6 +3,7 @@
 
 #include "user.h"
 #include "contacto.h"
+#include "ventanadeconversaciondialog.h"
 
 #include <vector>
 
@@ -45,13 +46,14 @@ private slots:  //WIDGETS
 
     void on_EnviarpushButton_clicked();
 
-    void saveDB(QJsonArray jsonArray);
+    void saveDB();
 
     void on_EscribirMensajelineEdit_textChanged(const QString &arg1);
 
 private:
         Ui::MainWindow *ui;
         User *user;
+        VentanadeConversacionDialog *conversacion;
 
         //USERS
         std::vector<User> usersVector;
@@ -72,7 +74,8 @@ private:
         void addContact();
         void updateContactList();
         void updateUsersList();
-        QString getPhoneByUser(QString username);
+        QString getPhoneByUser(QString userName);
+        User* getThisUser(QString userName);
         void searchUsersByName(QString name);
 
         ///se utiliza para verifiar que ambos usuarios sean amigos :3

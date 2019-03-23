@@ -176,6 +176,10 @@ void MainWindow::saveUsers()
             jsonObjectContacto["name"] = contactos[j].getUserName();
             jsonObjectContacto["phone"] = contactos[j].getPhoneNumber();
 
+            for (unsigned int m=0; m < contactos[j].getConversacion().size(); m++) {
+
+            }
+
             jsonarrayContactos.append(jsonObjectContacto);
         }
         jsonObjectUsuario["contactos"] = jsonarrayContactos;
@@ -184,7 +188,7 @@ void MainWindow::saveUsers()
 
     }
 
-    saveDB(jsonArrayUsuarios);
+    emit saveUs(jsonArrayUsuarios);
 
 }
 
@@ -256,14 +260,28 @@ void MainWindow::updateUsersList()
     }
 }
 
-QString MainWindow::getPhoneByUser(QString username)
+QString MainWindow::getPhoneByUser(QString userName)
 {
     for(unsigned int i = 0; i < usersVector.size(); i++){
 
-        if(usersVector[i].getUserName() == username)
+        if(usersVector[i].getUserName() == userName)
             return usersVector[i].getPhoneNumber();
     }
     return "Unknown";
+}
+
+User *MainWindow::getThisUser(QString userName)
+{
+    User* user = nullptr;
+    for(unsigned int i = 0; i < usersVector.size(); i++)
+    {
+        if(usersVector[i].getUserName() == userName)
+        {
+            user = &usersVector[i];
+            break;
+        }
+    }
+    return user;
 }
 
 void MainWindow::searchUsersByName(QString name)
@@ -425,6 +443,12 @@ void MainWindow::on_EnviarpushButton_clicked()
     if(validarAmistad())
     {
         qDebug("Son amigos");
+        User *usuario(nullptr), *contacto(nullptr);
+        usuario = getThisUser(user->getUserName());
+        contacto = getThisUser(ui->EscribirMensajelineEdit->text());
+
+        conversacion = new VentanadeConversacionDialog(usuario, contacto);
+
     }
     else
     {
@@ -433,8 +457,8 @@ void MainWindow::on_EnviarpushButton_clicked()
 }
 
 //Es una funcion que manda a guardar el JSon usuarios
-void MainWindow::saveDB(QJsonArray jsonArray)
+void MainWindow::saveDB()
 {
-    emit saveUs(jsonArray);
+    saveUsers();
 }
 

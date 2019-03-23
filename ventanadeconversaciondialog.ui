@@ -14,6 +14,9 @@
    <string>Dialog</string>
   </property>
   <widget class="QLineEdit" name="chatLineEdit">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
    <property name="geometry">
     <rect>
      <x>10</x>
@@ -33,6 +36,9 @@
    </property>
   </widget>
   <widget class="QTableWidget" name="VentanatableWidget">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
    <property name="geometry">
     <rect>
      <x>10</x>

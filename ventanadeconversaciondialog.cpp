@@ -1,16 +1,17 @@
 #include "ventanadeconversaciondialog.h"
 #include "ui_ventanadeconversaciondialog.h"
 //Constructor
-VentanadeConversacionDialog::VentanadeConversacionDialog(QString users, QString contacto, QWidget *parent) :
+VentanadeConversacionDialog::VentanadeConversacionDialog(User *users, User *contacto, QWidget *parent) :
     QDialog(parent),
     ui(new Ui::VentanadeConversacionDialog)
 {
     ui->setupUi(this);
     ///Nombre es el equivalente a userName de contaco y usuario...
-    Nombre = users;
+    Nombre = users->getUserName();
     ///Es similar al userName, pero en la parte de contactos...
-    Contacto = contacto;
-    system("mkdir colormensaje");
+    Contacto = contacto->getUserName();
+
+    //system("mkdir colormensaje");
 
    //ui->EnviarpushButton->setStyleSheet("background-color: #");
 
@@ -41,8 +42,8 @@ void VentanadeConversacionDialog::on_EnviarpushButton_clicked()
 
     ui->MensajelineEdit->setText("");
 }
-///Es para los mensajes de texto que se enviarán los if y else espara poner el color a los recuadros de conversacion y dependiendo de quien sea
-/// la persona que envia o recibe, es el color que se obtendrá en su recuadro.
+///Es para los mensajes de texto que se enviarán los if y else espara poner el color a los recuadros de conversacion y
+/// dependiendo de quien sea la persona que envia o recibe, es el color que se obtendrá en su recuadro.
 void VentanadeConversacionDialog::on_MensajelineEdit_textChanged(const QString &arg1)
 {
     Q_UNUSED(arg1);

@@ -29,9 +29,11 @@ public:
         ColorMensaje->resize(189, 132);
         Fecha = new QTextEdit(ColorMensaje);
         Fecha->setObjectName(QString::fromUtf8("Fecha"));
+        Fecha->setEnabled(false);
         Fecha->setGeometry(QRect(10, 0, 181, 51));
         TextoMensajetextEdit = new QTextEdit(ColorMensaje);
         TextoMensajetextEdit->setObjectName(QString::fromUtf8("TextoMensajetextEdit"));
+        TextoMensajetextEdit->setEnabled(false);
         TextoMensajetextEdit->setGeometry(QRect(10, 50, 181, 81));
 
         retranslateUi(ColorMensaje);

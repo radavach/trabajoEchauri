@@ -32,6 +32,16 @@
                             "fecha": "23/3/2019/12:33",
                             "texto": "Michelle es un dinosaurio RAWR!!! :v//",
                             "transmision": "Christian"
+                        },
+                        {
+                            "fecha": "23/3/2019/15:35",
+                            "texto": "Michelle es un segundo dinosaurio :3",
+                            "transmision": "Christian"
+                        },
+                        {
+                            "fecha": "23/3/2019/16:50",
+                            "texto": "Tu eres el dinosaurio, ademas eres tonto",
+                            "transmision": "Michelle"
                         }
                     ],
                     "name": "Christian",
@@ -424,6 +434,16 @@
                             "fecha": "23/3/2019/12:33",
                             "texto": "Michelle es un dinosaurio RAWR!!! :v//",
                             "transmision": "Christian"
+                        },
+                        {
+                            "fecha": "23/3/2019/15:35",
+                            "texto": "Michelle es un segundo dinosaurio :3",
+                            "transmision": "Christian"
+                        },
+                        {
+                            "fecha": "23/3/2019/16:50",
+                            "texto": "Tu eres el dinosaurio, ademas eres tonto",
+                            "transmision": "Michelle"
                         }
                     ],
                     "name": "Michelle",

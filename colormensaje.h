@@ -18,7 +18,7 @@ public:
 
     void setText(QString text);
     void setFecha(QString fech);
-    void setColores(QString color);
+    void setColores(QString colorMensaje, QString colorFondo);
 
 private:
     Ui::ColorMensaje *ui;

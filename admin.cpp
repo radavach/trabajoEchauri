@@ -84,7 +84,7 @@ void Admin::loadDB(){
                     QJsonObject objMensaje = jsonArrayMensaje[m].toObject();
                     conversacion.setFecha(objMensaje["fecha"].toString());
                     conversacion.setTexto(objMensaje["texto"].toString());
-                    conversacion.setTrans(objMensaje["transmicion"].toString());
+                    conversacion.setTrans(objMensaje["transmision"].toString());
 
                     contactos.addMensaje(conversacion);
                 }

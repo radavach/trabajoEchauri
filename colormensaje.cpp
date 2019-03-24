@@ -26,7 +26,9 @@ void ColorMensaje::setFecha(QString fech)
     ui->Fecha->setText(fech);
 }
 
-void ColorMensaje::setColores(QString color)
+void ColorMensaje::setColores(QString colorMensaje, QString colorFondo)
 {
-    this->setStyleSheet("QDialog{border-radius:15px; border-style:none; background-color:" + color + "}");
+    ui->Fecha->setStyleSheet("border-radius:10px; border: 1; background-color:" + colorMensaje );
+    ui->TextoMensajetextEdit->setStyleSheet("border-radius:15px; border:1; background-color:" + colorMensaje );
+    this->setStyleSheet("QDialog{border-radius:15px; border-style:none; background-color:" + colorFondo + "}");
 }

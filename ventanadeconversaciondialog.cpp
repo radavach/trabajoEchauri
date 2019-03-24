@@ -22,7 +22,15 @@ VentanadeConversacionDialog::VentanadeConversacionDialog(User *users, User *cont
 
     //Archivo();
     //loadFile();
-    ///actualizacionDeConversacion();
+
+//    ui->conversaciontableWidget->setRowCount(3);
+    ui->conversaciontableWidget->setColumnCount(2);
+    ui->conversaciontableWidget->setStyleSheet("background-color: gray");
+
+    ui->conversaciontableWidget->horizontalHeader()->hide();
+    ui->conversaciontableWidget->verticalHeader()->hide();
+
+    actualizacionDeConversacion();
 }
 //Destructor
 VentanadeConversacionDialog::~VentanadeConversacionDialog()
@@ -50,6 +58,8 @@ void VentanadeConversacionDialog::on_EnviarpushButton_clicked()
     //actualizacionDeConversacion();
 
     ui->MensajelineEdit->setText("");
+
+    insertarMensaje(newMessage);
 }
 ///Es para los mensajes de texto que se enviarán los if y else espara poner el color a los recuadros de conversacion y
 /// dependiendo de quien sea la persona que envia o recibe, es el color que se obtendrá en su recuadro.
@@ -98,6 +108,57 @@ bool VentanadeConversacionDialog::validacionDeCadena(QString Texto)
             return true;
     }
     return false;
+}
+
+void VentanadeConversacionDialog::actualizacionDeConversacion()
+{
+    for (unsigned int i(0); i < conversacionUsuario->getConversacion().size(); i++) {
+        insertarMensaje(conversacionUsuario->getConversacion()[i]);
+    }
+}
+
+void VentanadeConversacionDialog::insertarMensaje(const Conversacion &mensaje)
+{
+    Q_UNUSED(mensaje);
+    ColorMensaje *mns;
+    mns = new ColorMensaje();
+    int numeroColumna;
+    int numeroFila;
+
+
+    numeroFila = ui->conversaciontableWidget->rowCount();
+    ui->conversaciontableWidget->insertRow(ui->conversaciontableWidget->rowCount());
+
+    QString gris = "gray";
+
+    if(nombreUsuario == mensaje.getTrans())
+    {
+        QString rosa = "#FFB5E8";
+        mns->setColores(rosa, gris);
+        numeroColumna = 1;
+    }
+    else {
+        QString azul = "#C4FAF8";
+        mns->setColores(azul, gris);
+        numeroColumna = 0;
+    }
+
+    mns->setText(mensaje.getTexto());
+    mns->setFecha(mensaje.getFecha());
+
+    mns->show();
+
+    qDebug() << "numero de fila: " << numeroFila;
+    qDebug() << "numero de columna: " << numeroColumna;
+
+    ui->conversaciontableWidget->setCellWidget(numeroFila, numeroColumna, mns);
+//    ui->conversaciontableWidget->resizeRowsToContents();
+//    ui->conversaciontableWidget->resizeColumnsToContents();
+    ui->conversaciontableWidget->setRowHeight(numeroFila, 130);
+//    ui->conversaciontableWidget->setColumnWidth(numeroColumna,200);
+    ui->conversaciontableWidget->setColumnWidth(numeroColumna, (ui->conversaciontableWidget->width()/2)-10);
+
+
 }
 
 Contacto *VentanadeConversacionDialog::buscarContactoConversacion(User *usuario, QString contacto)

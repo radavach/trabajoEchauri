@@ -23,31 +23,38 @@ class Ui_VentanadeConversacionDialog
 {
 public:
     QLineEdit *chatLineEdit;
-    QTableWidget *VentanatableWidget;
     QPushButton *EnviarpushButton;
     QLineEdit *MensajelineEdit;
+    QTableWidget *conversaciontableWidget;
 
     void setupUi(QDialog *VentanadeConversacionDialog)
     {
         if (VentanadeConversacionDialog->objectName().isEmpty())
             VentanadeConversacionDialog->setObjectName(QString::fromUtf8("VentanadeConversacionDialog"));
-        VentanadeConversacionDialog->resize(400, 300);
+        VentanadeConversacionDialog->resize(463, 363);
         chatLineEdit = new QLineEdit(VentanadeConversacionDialog);
         chatLineEdit->setObjectName(QString::fromUtf8("chatLineEdit"));
-        chatLineEdit->setEnabled(true);
-        chatLineEdit->setGeometry(QRect(10, 9, 381, 21));
+        chatLineEdit->setEnabled(false);
+        chatLineEdit->setGeometry(QRect(10, 9, 441, 21));
         chatLineEdit->setLayoutDirection(Qt::LeftToRight);
+        chatLineEdit->setStyleSheet(QString::fromUtf8("background-color: white; color: black"));
         chatLineEdit->setAlignment(Qt::AlignCenter);
-        VentanatableWidget = new QTableWidget(VentanadeConversacionDialog);
-        VentanatableWidget->setObjectName(QString::fromUtf8("VentanatableWidget"));
-        VentanatableWidget->setEnabled(true);
-        VentanatableWidget->setGeometry(QRect(10, 40, 381, 201));
         EnviarpushButton = new QPushButton(VentanadeConversacionDialog);
         EnviarpushButton->setObjectName(QString::fromUtf8("EnviarpushButton"));
-        EnviarpushButton->setGeometry(QRect(300, 250, 81, 41));
+        EnviarpushButton->setGeometry(QRect(370, 310, 81, 41));
         MensajelineEdit = new QLineEdit(VentanadeConversacionDialog);
         MensajelineEdit->setObjectName(QString::fromUtf8("MensajelineEdit"));
-        MensajelineEdit->setGeometry(QRect(10, 250, 281, 41));
+        MensajelineEdit->setGeometry(QRect(10, 310, 351, 41));
+        conversaciontableWidget = new QTableWidget(VentanadeConversacionDialog);
+        conversaciontableWidget->setObjectName(QString::fromUtf8("conversaciontableWidget"));
+        conversaciontableWidget->setEnabled(true);
+        conversaciontableWidget->setGeometry(QRect(10, 40, 441, 251));
+        conversaciontableWidget->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
+        conversaciontableWidget->setHorizontalScrollBarPolicy(Qt::ScrollBarAsNeeded);
+        conversaciontableWidget->setSizeAdjustPolicy(QAbstractScrollArea::AdjustIgnored);
+        conversaciontableWidget->setAutoScroll(true);
+        conversaciontableWidget->setVerticalScrollMode(QAbstractItemView::ScrollPerPixel);
+        conversaciontableWidget->setHorizontalScrollMode(QAbstractItemView::ScrollPerPixel);
 
         retranslateUi(VentanadeConversacionDialog);
 

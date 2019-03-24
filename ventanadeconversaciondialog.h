@@ -16,6 +16,8 @@
 #include <QJsonObject>
 #include <QHBoxLayout>
 
+#include <QDebug>
+
 ////Holis señor Christian, este archivo es el más importante de la conversacion
 namespace Ui {
 class VentanadeConversacionDialog;
@@ -50,7 +52,8 @@ private:
     void saveFile();*/
 
     bool validacionDeCadena(QString Texto);
-    //void actualizacionDeConversacion();
+    void actualizacionDeConversacion();
+    void insertarMensaje(const Conversacion &mensaje);
 
     Contacto *buscarContactoConversacion(User* usuario, QString contacto);
 

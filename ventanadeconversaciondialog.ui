@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>300</height>
+    <width>463</width>
+    <height>363</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -15,18 +15,21 @@
   </property>
   <widget class="QLineEdit" name="chatLineEdit">
    <property name="enabled">
-    <bool>true</bool>
+    <bool>false</bool>
    </property>
    <property name="geometry">
     <rect>
      <x>10</x>
      <y>9</y>
-     <width>381</width>
+     <width>441</width>
      <height>21</height>
     </rect>
    </property>
    <property name="layoutDirection">
     <enum>Qt::LeftToRight</enum>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: white; color: black</string>
    </property>
    <property name="text">
     <string>Chat</string>
@@ -35,24 +38,11 @@
     <set>Qt::AlignCenter</set>
    </property>
   </widget>
-  <widget class="QTableWidget" name="VentanatableWidget">
-   <property name="enabled">
-    <bool>true</bool>
-   </property>
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>40</y>
-     <width>381</width>
-     <height>201</height>
-    </rect>
-   </property>
-  </widget>
   <widget class="QPushButton" name="EnviarpushButton">
    <property name="geometry">
     <rect>
-     <x>300</x>
-     <y>250</y>
+     <x>370</x>
+     <y>310</y>
      <width>81</width>
      <height>41</height>
     </rect>
@@ -65,13 +55,44 @@
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>250</y>
-     <width>281</width>
+     <y>310</y>
+     <width>351</width>
      <height>41</height>
     </rect>
    </property>
    <property name="placeholderText">
     <string>Ingresa el mensaje que deseas enviar. </string>
+   </property>
+  </widget>
+  <widget class="QTableWidget" name="conversaciontableWidget">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>40</y>
+     <width>441</width>
+     <height>251</height>
+    </rect>
+   </property>
+   <property name="verticalScrollBarPolicy">
+    <enum>Qt::ScrollBarAsNeeded</enum>
+   </property>
+   <property name="horizontalScrollBarPolicy">
+    <enum>Qt::ScrollBarAsNeeded</enum>
+   </property>
+   <property name="sizeAdjustPolicy">
+    <enum>QAbstractScrollArea::AdjustIgnored</enum>
+   </property>
+   <property name="autoScroll">
+    <bool>true</bool>
+   </property>
+   <property name="verticalScrollMode">
+    <enum>QAbstractItemView::ScrollPerPixel</enum>
+   </property>
+   <property name="horizontalScrollMode">
+    <enum>QAbstractItemView::ScrollPerPixel</enum>
    </property>
   </widget>
  </widget>
